@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🎧 GRE Words Audio Library</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="header-bar">🎵 GRE Words Audio Library</div>
+    <div class="main-container">
+        <div class="audio-grid">
+            {% for file in files %}
+            <div class="audio-card">
+                <h5>{{ file }}</h5>
+                <audio controls>
+                    <source src="{{ url_for('static', filename='audio/' ~ file) }}">
+                    Your browser does not support the audio element.
+                </audio>
+                <a href="{{ url_for('download_file', filename=file) }}" class="btn glow-btn">⬇️ Download</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
